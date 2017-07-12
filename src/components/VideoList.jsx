@@ -1,16 +1,12 @@
-class VideoList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <div className="video-list media">
-        <VideoListEntry props/>
-      </div>
-    );
-  }
-
-}
+var VideoList = (exampleVideoData) => (
+  <div className="video-list media">
+    {_.forEach(exampleVideoData.videos, (video) => {
+      console.log(video);
+      <VideoListEntry video/>;
+    })  
+    }
+  </div>
+);
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
