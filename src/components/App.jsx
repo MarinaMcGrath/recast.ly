@@ -1,7 +1,7 @@
 
 class App extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     this.data = exampleVideoData;
     this.state = {
       videos: this.data,
@@ -9,7 +9,24 @@ class App extends React.Component {
     };
     this.onTitleClick = this.onTitleClick.bind(this);
   }
+
+  componentDidMount() {
+
+    this.props.searchYouTube({
+      key: 'AIzaSyA00eJoSXqHc22b_MiJcyCJEHSXxFQxVd0', 
+      query: 'cats', 
+      max: 5}, (data) => {
+      this.data = data;  
+      console.log(data);
+      this.setState({
+        videos: data,
+        playing: data[0]
+      });
+      this.render();
+    });
+  }
   onTitleClick (index) {
+    
     this.setState({
       playing: this.data[index]
     });
