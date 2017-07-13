@@ -4,7 +4,6 @@ var searchYouTube = (options, callback) => {
     url: `https://www.googleapis.com/youtube/v3/search?key=${options.key}&type=video&part=snippet&q=${options.query}&maxResults=${options.max}`,
     success: function(data) {
       data = data.items;
-      console.log(data);
       return callback(data);
     }
   });

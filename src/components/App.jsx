@@ -17,7 +17,6 @@ class App extends React.Component {
       query: 'cats', 
       max: 5}, (data) => {
       this.data = data;  
-      console.log(data);
       this.setState({
         videos: data,
         playing: data[0]
@@ -25,8 +24,10 @@ class App extends React.Component {
       this.render();
     });
   }
+  onSearchType() {
+    console.log('yup');
+  }
   onTitleClick (index) {
-    
     this.setState({
       playing: this.data[index]
     });
@@ -35,7 +36,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav />
+        <Nav onSearchType={this.onSearchType}/>
         <div className="col-md-7">
           <VideoPlayer video={this.state.playing}/>
         </div>
