@@ -5,16 +5,18 @@ class App extends React.Component {
     this.data = exampleVideoData;
     this.state = {
       videos: this.data,
-      playing: this.data[0]
+      playing: this.data[0],
+      query: 'cats'
     };
     this.onTitleClick = this.onTitleClick.bind(this);
+    this.onSearchType = this.onSearchType.bind(this);
   }
 
   componentDidMount() {
 
     this.props.searchYouTube({
       key: 'AIzaSyA00eJoSXqHc22b_MiJcyCJEHSXxFQxVd0', 
-      query: 'cats', 
+      query: this.state.query, 
       max: 5}, (data) => {
       this.data = data;  
       this.setState({
@@ -24,8 +26,23 @@ class App extends React.Component {
       this.render();
     });
   }
-  onSearchType() {
-    console.log('yup');
+  onSearchType(e) {
+    if (e.key === 'Enter') {
+      this.setState({
+        query: e.target.value
+      });
+    } 
+    this.props.searchYouTube({
+      key: 'AIzaSyA00eJoSXqHc22b_MiJcyCJEHSXxFQxVd0', 
+      query: this.state.query, 
+      max: 5}, (data) => {
+      this.data = data;  
+      this.setState({
+        videos: data,
+        playing: data[0]
+      });
+      this.render();
+    });
   }
   onTitleClick (index) {
     this.setState({
