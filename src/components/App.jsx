@@ -1,16 +1,22 @@
+
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.data = exampleVideoData;
+    this.state = {
+      videos: this.data,
+      video: this.data[0]
+    };
   }
   render() {
     return (
       <div>
         <Nav />
         <div className="col-md-7">
-          <VideoPlayer />
+          <VideoPlayer video = {this.state.video}/>
         </div>
         <div className="col-md-5">
-          <VideoList props/>
+          <VideoList videos = {this.state.videos}/>
         </div>
       </div>
     );

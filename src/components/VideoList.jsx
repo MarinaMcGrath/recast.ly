@@ -1,8 +1,7 @@
-var VideoList = (exampleVideoData) => (
+var VideoList = (props) => (
   <div className="video-list media">
-    {_.forEach(exampleVideoData.videos, (video) => {
-      console.log(video);
-      <VideoListEntry video/>;
+    {_.map(props.videos, (video) => {
+      return <VideoListEntry video = {video}/>;
     })  
     }
   </div>
