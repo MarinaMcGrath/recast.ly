@@ -41,14 +41,13 @@ class App extends React.Component {
         videos: data,
         playing: data[0]
       });
-      this.render();
+    
     });
   }
   onTitleClick (index) {
     this.setState({
       playing: this.data[index]
     });
-    this.render();
   }
   render() {
     return (
